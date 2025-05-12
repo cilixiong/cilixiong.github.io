@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>磁力熊官网入口 - 强大的磁力链接搜索与下载工具</title>
+    <meta name="keywords" content="磁力熊、磁力链接、资源搜索、下载管理、文件分类">
+    <meta name="description" content="磁力熊是一款集成了磁力链接搜索、下载、管理等功能的软件，支持多种文件格式的磁力链接下载，满足用户对资源获取的各种需求。">
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>
+        tailwind.config = { darkMode: `class` }
+    </script>
+    <link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./cilixiong.png">
+    <link rel="manifest" href="site.webmanifest">
+    <script>
+        // 自定义Tailwind配置
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#165DFF', // 深蓝色主色调
+                        secondary: '#36BFFA', // 浅蓝色辅助色
+                        neutral: {
+                            100: '#F8F9FA',
+                            200: '#E9ECEF',
+                            700: '#343A40',
+                            800: '#212529',
+                            900: '#121212'
+                        }
+                    },
+                    fontFamily: {
+                        inter: ['Inter', 'system-ui', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            }
+            .hover-scale {
+                transition: transform 0.3s ease;
+            }
+            .hover-scale:hover {
+                transform: scale(1.03);
+            }
+            .feature-card {
+                @apply bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-lg hover:-translate-y-1;
+            }
+            .icon-bg {
+                @apply bg-primary/10 dark:bg-primary/20 p-3 rounded-lg mr-4;
+            }
+            .resource-card {
+                @apply bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1;
+            }
+            .fade-in {
+                opacity: 0;
+                transform: translateY(20px);
+                animation: fadeIn 0.8s ease forwards;
+            }
+            @keyframes fadeIn {
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            .user-card {
+                @apply bg-white dark:bg-gray-800 rounded-xl p-6 shadow-md transition-all duration-300 hover:shadow-lg;
+            }
+            .user-icon {
+                @apply w-16 h-16 rounded-full overflow-hidden shadow-md mb-4;
+            }
+        }
+    </style>
+</head>
+
+<body class="min-h-screen font-inter bg-gray-50 dark:bg-gray-900 text-gray-800 dark:text-gray-200">
+    <div class="container mx-auto px-4 py-8 max-w-7xl">
+
+        <!-- 导航栏 -->
+        <nav class="fixed top-0 left-0 right-0 z-50 bg-white/90 dark:bg-gray-800/90 backdrop-blur-md shadow-sm transition-all duration-300" id="navbar">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between h-16">
+                    <div class="flex items-center">
+                        <a href="#" class="flex-shrink-0 flex items-center">
+                            <i class="fas fa-bear text-primary text-xl mr-2"></i>
+                            <span class="text-primary font-bold text-xl">磁力熊</span>
+                        </a>
+                        <div class="hidden sm:ml-6 sm:flex sm:space-x-8">
+                            <a href="#about" class="border-b-2 border-primary px-1 pt-1 text-sm font-medium text-primary">网站介绍</a>
+                            <a href="#features" class="border-transparent hover:border-primary px-1 pt-1 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary">功能特点</a>
+                            <a href="#steps" class="border-transparent hover:border-primary px-1 pt-1 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary">使用步骤</a>
+                            <a href="#faq" class="border-transparent hover:border-primary px-1 pt-1 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary">常见问题</a>
+                            <a href="#reviews" class="border-transparent hover:border-primary px-1 pt-1 text-sm font-medium text-gray-500 dark:text-gray-400 hover:text-primary">用户评价</a>
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <button class="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-700 transition-colors" id="themeToggle">
+                            <i class="fas fa-moon-o text-gray-500 dark:text-yellow-400"></i>
+                        </button>
+                        <button class="ml-4 block sm:hidden p-2 rounded-md text-gray-500 dark:text-gray-400 hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-700" id="mobile-menu-button">
+                            <i class="fas fa-bars"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 移动端菜单 -->
+            <div class="sm:hidden hidden" id="mobile-menu">
+                <div class="pt-2 pb-3 space-y-1 px-4">
+                    <a href="#about" class="bg-primary/5 border-l-4 border-primary text-primary block pl-3 pr-4 py-2 text-base font-medium">网站介绍</a>
+                    <a href="#features" class="border-l-4 border-transparent hover:border-primary hover:bg-primary/5 text-gray-600 dark:text-gray-300 hover:text-primary block pl-3 pr-4 py-2 text-base font-medium">功能特点</a>
+                    <a href="#steps" class="border-l-4 border-transparent hover:border-primary hover:bg-primary/5 text-gray-600 dark:text-gray-300 hover:text-primary block pl-3 pr-4 py-2 text-base font-medium">使用步骤</a>
+                    <a href="#faq" class="border-l-4 border-transparent hover:border-primary hover:bg-primary/5 text-gray-600 dark:text-gray-300 hover:text-primary block pl-3 pr-4 py-2 text-base font-medium">常见问题</a>
+                    <a href="#reviews" class="border-l-4 border-transparent hover:border-primary hover:bg-primary/5 text-gray-600 dark:text-gray-300 hover:text-primary block pl-3 pr-4 py-2 text-base font-medium">用户评价</a>
+                </div>
+            </div>
+        </nav>
+
+        <header class="relative bg-gradient-to-r from-primary to-secondary text-white py-16 md:py-24 pt-24">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center fade-in">
+                    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-shadow">磁力熊</h1>
+                    <p class="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">磁力链接搜索与下载，便捷高效。</p>
+                    <div class="mt-8 flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                        <a class="bg-white text-primary hover:bg-gray-100 hover:scale-105 transition-transform font-medium py-3 px-6 rounded-lg shadow-lg"
+                            href="https://www.ggonav.com/sites/5948.html" target="_blank">
+                            <i class="fas fa-external-link-alt mr-2"></i>访问官网
+                        </a>
+                        <a class="bg-white text-primary hover:bg-gray-100 hover:scale-105 transition-transform font-medium py-3 px-6 rounded-lg shadow-lg"
+                            href="https://pan.quark.cn/s/0db22432c259" target="_blank"   content="nofollow no-referrer" >
+                            <i class="fas fa-download mr-2"></i>经典电影/无损音乐
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="absolute inset-0 bg-black opacity-10"></div>
+        </header>
+
+        <!-- 增加隔离空间 -->
+        <div class="h-5 md:h-10"></div>
+
+        <!-- 网站介绍部分 -->
+        <section id="about" class="mb-16 fade-in" style="animation-delay: 0.4s">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <div class="icon-bg">
+                    <i class="fas fa-info-circle text-primary text-xl"></i>
+                </div>
+                网站介绍
+            </h2>
+            <div class="bg-white dark:bg-gray-800 rounded-xl p-8 shadow-lg">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                            <i class="fas fa-link text-primary mr-2"></i>磁力熊是一款集成了磁力链接搜索、下载、管理等功能的软件。它通过支持多种文件格式的磁力链接下载，满足了用户对资源获取的各种需求。
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed mb-4">
+                            <i class="fas fa-search text-primary mr-2"></i>磁力熊的搜索引擎功能强大，能够为用户提供更精准的结果。用户只需要在其界面中输入关键字，便可快速找到相关的资源链接，点击后即可开始下载。
+                        </p>
+                        <p class="text-gray-700 dark:text-gray-300 leading-relaxed">
+                            <i class="fas fa-server text-primary mr-2"></i>此外，磁力熊还具备完善的资源管理系统，在下载过程中，用户可以查看下载进度，并且可以暂停或继续下载，方便灵活。它还支持分类管理用户下载的资源，帮助用户更好地整理和查看下载内容。
+                        </p>
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-xl transform hover:scale-[1.02] transition-transform duration-300">
+                        <img src="./cilixiong.jpg" alt="磁力熊界面展示" class="w-full h-auto">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 功能特点部分 -->
+        <section id="features" class="mb-16 fade-in" style="animation-delay: 0.6s">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <div class="icon-bg">
+                    <i class="fas fa-thumbs-up text-primary text-xl"></i>
+                </div>
+                功能特点
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-search text-primary mr-2"></i>
+                        强大的搜索功能
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        磁力熊拥有强大的搜索功能，用户只需输入关键词，即可快速找到所需的磁力资源。它支持模糊搜索，能够广泛覆盖各种资源，满足用户的需求。无论是电影、电视剧、动漫、音乐还是游戏等资源，都能轻松找到。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-database text-primary mr-2"></i>
+                        丰富的资源库
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        磁力熊的资源库非常强大，涵盖了各种类型的资源。它不仅包括影视、音乐、游戏等常见资源，还涵盖了电子书、软件等多种资源。用户可以在里面搜索到几乎所有想要的资源。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-tasks text-primary mr-2"></i>
+                        智能资源管理
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        磁力熊不仅提供资源搜索与下载功能，还具备完善的资源管理系统。在下载过程中，用户可以查看下载进度，并且可以暂停或继续下载，方便灵活。此外，磁力熊支持分类管理用户下载的资源，帮助用户更好地整理和查看下载内容。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 使用步骤部分 -->
+        <section id="steps" class="mb-16 fade-in" style="animation-delay: 0.6s">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <div class="icon-bg">
+                    <i class="fas fa-step-forward text-primary text-xl"></i>
+                </div>
+                使用步骤
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-download text-primary mr-2"></i>
+                        下载与安装
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        用户需要从官方网站下载并安装磁力熊客户端。安装完成后，打开软件，即可开始使用。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-search text-primary mr-2"></i>
+                        搜索资源
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        打开磁力熊软件后，用户可以在主界面的搜索框中输入关键词，比如电影名称、音乐专辑、软件工具等。输入完毕后，点击“搜索”按钮，磁力熊会展示一系列相关的磁力链接。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-play text-primary mr-2"></i>
+                        下载资源
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        选择合适的链接后，点击下载按钮，文件便会开始下载。在下载过程中，用户可以查看下载进度，并且可以暂停或继续下载。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 常见问题部分 -->
+        <section id="faq" class="mb-16 fade-in" style="animation-delay: 0.6s">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <div class="icon-bg">
+                    <i class="fas fa-question-circle text-primary text-xl"></i>
+                </div>
+                常见问题
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-search-minus text-secondary mr-2"></i>
+                        搜索结果不准确
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        可能是搜索关键词不够准确或资源库中没有该资源。可以尝试使用更具体的关键词，或者在资源库中查找是否有类似的资源。如果确实没有该资源，可以等待平台更新其资源库。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-tachometer-alt text-secondary mr-2"></i>
+                        下载速度慢
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        可能是网络带宽不足或服务器负载过高。可以尝试在不同的时间段进行下载，避开网络高峰期。如果使用的是移动网络，可以切换到Wi-Fi网络，以提高下载速度。
+                    </p>
+                </div>
+                <div class="feature-card">
+                    <h3 class="text-xl font-semibold mb-4 flex items-center">
+                        <i class="fas fa-exclamation-triangle text-secondary mr-2"></i>
+                        资源无法下载
+                    </h3>
+                    <p class="text-gray-600 dark:text-gray-300">
+                        可能是网络连接问题或下载链接失效。可以尝试切换到更稳定的网络，或者在搜索结果中查找其他可用的下载链接。如果下载链接失效，可以尝试在搜索结果中查找其他可用的下载链接。
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 用户评价部分 -->
+        <section id="reviews" class="mb-16 fade-in" style="animation-delay: 0.8s">
+            <h2 class="text-2xl font-bold mb-8 flex items-center">
+                <div class="icon-bg">
+                    <i class="fas fa-comments text-primary text-xl"></i>
+                </div>
+                用户评价
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div class="user-card">
+                    <div class="user-icon">
+                        <img src="https://picsum.photos/200/200?random=1" alt="用户头像" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">下载达人小X</h3>
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">
+                        "磁力熊的资源很丰富，更新也快，我经常在这里找到最新的资源。"
+                    </p>
+                </div>
+                <div class="user-card">
+                    <div class="user-icon">
+                        <img src="https://picsum.photos/200/200?random=2" alt="用户头像" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">技术小白小Y</h3>
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">
+                        "界面简洁，操作方便，搜索功能强大，很容易找到自己喜欢的资源。"
+                    </p>
+                </div>
+                <div class="user-card">
+                    <div class="user-icon">
+                        <img src="https://picsum.photos/200/200?random=3" alt="用户头像" class="w-full h-full object-cover">
+                    </div>
+                    <h3 class="text-xl font-semibold mb-2">资源爱好者小Z</h3>
+                    <div class="flex text-yellow-400 mb-3">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-300 italic">
+                        "支持多种文件格式和多种下载方式，功能很强大。"
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 页脚 -->
+        <footer class="bg-gray-100 dark:bg-gray-800 py-12 rounded-xl">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-center">
+                    <div class="mb-6 md:mb-0">
+                        <div class="flex items-center">
+                            <i class="fas fa-bear text-primary text-2xl mr-2"></i>
+                            <span class="text-primary font-bold text-xl">磁力熊</span>
+                        </div>
+                        <p class="text-gray-600 dark:text-gray-400 mt-2">强大的磁力链接搜索与下载工具</p>
+                    </div>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-github text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-twitter text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary transition-colors">
+                            <i class="fab fa-youtube text-xl"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="mt-8 pt-8 border-t border-gray-200 dark:border-gray-700">
+                    <div class="flex flex-col md:flex-row justify-between">
+                        <p class="text-gray-600 dark:text-gray-400 text-sm">
+                            &copy; 2025 磁力熊. 保留所有权利.
+                        </p>
+                        <div class="mt-4 md:mt-0">
+                            <ul class="flex flex-wrap justify-center md:justify-end space-x-6">
+                                <li>
+                                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary text-sm">隐私政策</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary text-sm">使用条款</a>
+                                </li>
+                                <li>
+                                    <a href="#" class="text-gray-600 dark:text-gray-400 hover:text-primary text-sm">联系我们</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script>
+        // 导航栏滚动效果
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('shadow-md');
+                navbar.classList.remove('shadow-sm');
+            } else {
+                navbar.classList.remove('shadow-md');
+                navbar.classList.add('shadow-sm');
+            }
+        });
+
+        // 移动端菜单切换
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // 暗色模式切换
+        document.getElementById('themeToggle').addEventListener('click', function() {
+            document.documentElement.classList.toggle('dark');
+            
+            // 切换图标
+            const icon = this.querySelector('i');
+            if (document.documentElement.classList.contains('dark')) {
+                icon.classList.remove('fa-moon-o');
+                icon.classList.add('fa-sun-o');
+            } else {
+                icon.classList.remove('fa-sun-o');
+                icon.classList.add('fa-moon-o');
+            }
+        });
+
+        // 平滑滚动
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // 关闭移动端菜单
+                    document.getElementById('mobile-menu').classList.add('hidden');
+                }
+            });
+        });
+
+        // 元素进入视口时的淡入效果
+        const fadeElements = document.querySelectorAll('.fade-in');
+        
+        const fadeInObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animationPlayState = 'running';
+                    fadeInObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.1 });
+        
+        fadeElements.forEach(element => {
+            fadeInObserver.observe(element);
+        });
+    </script>
+</body>
+
+</html>
