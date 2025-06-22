@@ -2,7 +2,8 @@
 <p><strong>磁力熊网站介绍</strong></p>
 <p>磁力熊是一个专注于磁力链接搜索与资源下载的综合性平台，致力于为用户提供便捷、高效的数字资源获取体验。它不仅支持电影、电视剧、音乐、文档等多种类型的资源搜索，还提供高清资源下载服务，包括豆瓣Top250及高分电影的1080P高清磁力迅雷下载。磁力熊通过深度挖掘和整理海量的磁力链接，使用户能够快速找到所需资源，并支持多种下载设置和文件管理功能。</p>
 <p>磁力熊的界面设计简洁明了，操作逻辑清晰，即使是初次使用的用户也能轻松上手。此外，该平台还注重用户体验，提供智能推荐、分类清晰、无广告干扰等特点，确保用户在安全的环境中享受优质的服务。磁力熊还支持跨平台使用，无论是Windows还是macOS系统，都能满足用户的多样化需求。</p>
-<p><strong>一键访问：</strong><a href="https://www.ggonav.com/sites/5948.html"><strong>官网入口</strong></a></p>
+<p><strong>一键访问：</strong><a href="https://cilixiong.litxdh.com"><strong>官网入口</strong></a></p>
+<p><strong>一键访问：</strong><a href="https://cilisousuodaohang.litxdh.com"><strong>磁力搜索导航</strong></a></p>
 <p><strong>功能特点</strong></p>
 <ol>
 	<li><strong>深度搜索</strong>：磁力熊能够深度挖掘全网资源，无论是热门还是冷门内容，都能迅速定位并呈现给用户。</li>
